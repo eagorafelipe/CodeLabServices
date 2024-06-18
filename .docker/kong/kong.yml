@@ -1,0 +1,54 @@
+_format_version: '3.0'
+
+_transform: true
+
+services:
+  - name: usuario-service
+    url: http://api-usuario:3001/api/v1/usuario
+    routes:
+      - name: usuario-route
+        paths:
+          - /api/v1/usuario
+  
+  - name: email-service
+    url: http://api-email:3002/api/v1/email
+    routes:
+      - name: email-route
+        paths:
+          - /api/v1/email
+
+  - name: produto-service
+    url: http://api-produto:3003/api/v1/produto
+    routes:
+      - name: produto-route
+        paths:
+          - /api/v1/produto
+
+
+# plugins:
+#   - name: jwt
+#     route: usuario-route
+#     enabled: true
+#     config:
+#       key_claim_name: iss
+#       claims_to_verify:
+#         - exp
+#   - name: cors
+#     config:
+#       origins:
+#         - '*'
+#       methods:
+#         - GET
+#         - POST
+#         - PATCH
+#         - PUT
+#         - OPTIONS
+#         - DELETE
+#       credentials: true
+
+# consumers:
+#   - username: login_server_issuer
+
+# jwt_secrets:
+#   - consumer: login_server_issuer
+#     secret: 'f57d8cc37a35a8051aa97b5ec8506a2ac479e81f82aed9de975a0cb90b903044'
