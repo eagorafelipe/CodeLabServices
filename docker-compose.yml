@@ -30,6 +30,16 @@ services:
     networks:
       - codelab-net
 
+  redis:
+    image: redis:7.0.9-alpine
+    container_name: redis
+    volumes:
+      - .docker/redis/data:/data
+    ports:
+      - 6379:6379
+    networks:
+      - codelab-net
+
 networks:
   codelab-net:
     name: codelab-net

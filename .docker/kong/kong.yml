@@ -24,31 +24,16 @@ services:
         paths:
           - /api/v1/produto
 
+  - name: pessoa-service
+    url: http://api-pessoa:3004/api/v1/pessoa
+    routes:
+      - name: pessoa-route
+        paths:
+          - /api/v1/pessoa
 
-# plugins:
-#   - name: jwt
-#     route: usuario-route
-#     enabled: true
-#     config:
-#       key_claim_name: iss
-#       claims_to_verify:
-#         - exp
-#   - name: cors
-#     config:
-#       origins:
-#         - '*'
-#       methods:
-#         - GET
-#         - POST
-#         - PATCH
-#         - PUT
-#         - OPTIONS
-#         - DELETE
-#       credentials: true
-
-# consumers:
-#   - username: login_server_issuer
-
-# jwt_secrets:
-#   - consumer: login_server_issuer
-#     secret: 'f57d8cc37a35a8051aa97b5ec8506a2ac479e81f82aed9de975a0cb90b903044'
+  - name: financeiro-service
+    url: http://api-financeiro:3005/api/v1/financeiro
+    routes:
+      - name: financeiro-route
+        paths:
+          - /api/v1/financeiro
