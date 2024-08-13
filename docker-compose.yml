@@ -9,9 +9,10 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=codelab
       - RABBITMQ_DEFAULT_PASS=c0D3&l4b
+      - TMZ=America/Sao_Paulo
     ports:
-      - '5672:5672'
-      - '15672:15672'
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - codelab-net
 
@@ -19,14 +20,15 @@ services:
     image: kong:3.1.1-alpine
     container_name: kong
     volumes:
-      - './.docker/kong/kong.yml:/home/kong/kong.yml'
+      - "./.docker/kong/kong.yml:/home/kong/kong.yml"
     environment:
       - KONG_DATABASE=off
       - KONG_DECLARATIVE_CONFIG=/home/kong/kong.yml
       - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+      - TMZ=America/Sao_Paulo
     ports:
-      - '3000:8000'
-      - '8001:8001'
+      - "3000:8000"
+      - "8001:8001"
     networks:
       - codelab-net
 
@@ -37,6 +39,8 @@ services:
       - .docker/redis/data:/data
     ports:
       - 6379:6379
+    environment:
+      - TMZ=America/Sao_Paulo
     networks:
       - codelab-net
 
